@@ -1,7 +1,7 @@
 clear
 clc
-x = 0:0.5:25;
-y = log(x)+cos(x)-1;
+x = 0:0.1:25;
+y = log10(x)+cos(x)-1;
 plot(x,y,'r')
 title('Plot of the fucntion f(x)'),
 xlabel('value of x')
@@ -10,8 +10,8 @@ grid on
 
 hold on
 
-fun = @f
-r = fzero(fun,3);
+f = @(x) log10(x)+cos(x)-1;
+r = fzero(f,3);
 disp(['The root is: ', num2str(r)])
 p=[0,4.2493];
 plot(4.2493,0,'bo')

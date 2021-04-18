@@ -1,9 +1,9 @@
 clear
 clc
 
-f = @f;
-x0 = 1;
-x1 = 8;
+f = @(x) log10(x)+cos(x)-1;
+x0 = 6;
+x1 = 10;
 x2=x1-f(x1).*((x1-x0)/(f(x1)-f(x0)));
 root = abs(f(x2));
 epsilon = 1e-7;

@@ -1,16 +1,9 @@
 clear
 clc
-x = 0:0.1:25;
-y = log(x)+cos(x)-1;
-plot(x,y,'r')
-title('Plot of the fucntion f(x)'),
-xlabel('value of x')
-ylabel('value of y')
-grid on
 
-f = @f;
+f = @(x) log10(x)+cos(x)-1;
 x1 = 1;
-x2 = 20;
+x2 = 6;
 
 if f(x1)*f(x2)>0 
     disp('This is not possible')

@@ -1,16 +1,17 @@
 clear
 clc
 
-f = @(x) log10(x)+cos(x)-1;
-df =@(x) 1/x*log(10)-sin(x);
-x = 7;
+syms 'x'
+f = @(x) log(x)+cos(x)-1;
+df =@(x) sin(x) - 1/x;
+x = 1;
 %dif =@(x) diff(f2);
 y= x-f(x)/df(x);
-root = 1;
+root = abs(f(y));
 epsilon = 1e-7; 
 
 while root > epsilon
-    x1=x-f(x)/df(x);
+    x1=x-(f(x)/df(x));
     x = x1;
     root = abs(x-x1);
     s = x1;
