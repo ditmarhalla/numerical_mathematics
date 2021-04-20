@@ -132,14 +132,14 @@ r_newton = 1;                                       %We initiate the root variab
 
 i_newton = 0;                                       %Initaite the iteration variable
 while r_newton > epsilon                            %This while loop as in the previous method will continue untill the precision is met
-    t_newton = tic;                                  %Start "TIME"
+    t_newton = tic;                                 %Start "TIME"
     i_newton = i_newton + 1;                        %Increas by one each time we go throw the loop
     x1_newton=x_newton-f(x_newton)/df(x_newton);    %Method used to calculate the new point
     x_newton = x1_newton;                           %Substitute the x so that we can run the loop again
     r_newton = abs(f(x1_newton));                   %Calculate the root to see if the precision is reached
     s_newton = x1_newton;                           %Asign the last x and print sicne that is our root
 end
-t_newton_end = toc(t_newton);                         %End "TIME"
+t_newton_end = toc(t_newton);                       %End "TIME"
 
 fprintf('The root using the "Newton-Raphson" method is [%.10f] and it takes [%.7f s] to calculate. \n\n',s_newton,t_newton_end)
 
