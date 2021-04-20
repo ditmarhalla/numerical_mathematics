@@ -16,4 +16,4 @@ while root > epsilon
     s = x2;
 end
 
-fprintf('The root is:  %.2f ',s)
+fprintf('The root using this method is:  %.2f ',s)
