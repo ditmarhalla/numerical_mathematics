@@ -119,13 +119,13 @@ while r_secant > epsilon                            %Start the while loop and br
     r_secant = abs(f(x2_secant));                   %and can use the new point in the formual again
     s_secant = x2_secant;                           %We calculate root "r_secant" untill its lower then the precision. When the precesion
 end                                                 %is met we print the last value of x2 we found as that is our root
-t_secant_end = toc(t_secant);                         %End "TIME"
+t_secant_end = toc(t_secant);                       %End "TIME"
 
 fprintf('The root using the "Secant" method is [%.10f] and it takes [%.7f s] to calculate. \n',s_secant,t_secant_end)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Task6  Calculate the root using the "Newton-Raphson" method
-df =@(x) 1/x*log(10)-sin(x);                        %This is the first derivative of our function that we will use to calculate
+df =@(x) 1/(x*log(10)) - sin(x);                   %This is the first derivative of our function that we will use to calculate
 x_newton = 6;                                       %This is the point we will use to calculate our root
 %dif =@(x_newton) diff(f2);                         %I tried to use the diff integrated function but it did not work
 r_newton = 1;                                       %We initiate the root variable
