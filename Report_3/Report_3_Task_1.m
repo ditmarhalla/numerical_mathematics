@@ -20,8 +20,8 @@ S2 =@(x) sqrt(1 + dFun2(x).^2);     %Calculate the length of te curve with the d
 
 inte = integral(S2,1,2);            %Integrated function
 
+difference = GQ - inte;
+percent = (100*inte)/GQ; %Calculate the percantege of diference between the two methods.
 
-difference = round(((100*GQ)/inte),4);
-
-fprintf('\nThe diference between the integrated function and our iteration is: %d \n',difference)
+fprintf('\nThe diference between the integrated function and our iteration is: %d or %.2f percent\n',difference,percent)
 

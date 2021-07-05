@@ -2,7 +2,7 @@ clear all
 clc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                               Task 1
+%                               Task 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 x = -10:1:10;                           %Define an interva
@@ -13,15 +13,14 @@ h = x(3)-x(2);                          %Define the step h
 
 y = @(x) sin(x)+cos(x);                 %The function
 
-dy_fd = @(x) (y(x+h)-y(x-h))/(2*h);     %Diferenciate the function using the forard diference scheme
+dy_fd = @(x) (y(x+h)-y(x-h))/(2*h);     %Diferenciate the function using the forward difference scheme
 
 solution = [];                          %Create an empty matrix
 for i=1:length(x)                       %Start a loop from 1 to number of elements in x
     solution(i) = fzero(dy_fd,x(i));    %find where the function becomes 0
 end
 
-variable = unique(solution);            %Clean the matrix of solution from duplicates
-
+variable = unique(round(solution,10));  %Clean the matrix of solution from duplicates
 
 dy_hd = @(x) y(x+h)-2*y(x)+y(x-h)./h^2; %Equation for higher differentiation. In our case for second order
 
@@ -45,12 +44,24 @@ fun = sin(X)+cos(X);
 MAX = islocalmax(fun);
 MIN = islocalmin(fun);
 
+min = X(MIN);
+max = X(MAX);
+for i = 1:length(min)
+    difference_min = abs(minima(i)-min(i));
+    difference_max = abs(maxima(i)-max(i));
+fprintf('Diference between MATLAB function and our program is: minima %.5f and maxima  %.5f \n',difference_min,difference_max)
+end
 
 
 %To see the diferences we then plot everything
 fplot(y,'k','LineWidth',1.5)
 hold on
 fplot(dy_fd,'-')
+% %%%%%%%%%%%%%%% Plot y and y' and solution for fig1 
+% plot(solution,y(solution),'o','MarkerSize',8,'LineWidth',1.2)
+% legend('y',"y'",'solutions')
+% %%%%%%%%%%%%%%
+
 fplot(dy_hd,'-.')
 plot(X(MAX),fun(MAX),'.',X(MIN),fun(MIN),'.','MarkerSize',15)
 plot(variable,y(variable),'o','MarkerSize',8,'LineWidth',1.2)
